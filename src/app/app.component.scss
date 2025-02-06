@@ -1,0 +1,23 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
+@import 'bootstrap/scss/mixins/container';
+@import 'bootstrap/scss/mixins/grid';
+
+.app-container {
+    @include make-container();
+}
+
+.app-row {
+    @include make-row();
+}
+
+.app-sidebar {
+    @include make-col-ready();
+    @include make-col(1);
+}
+
+.app-main {
+    @include make-col-ready();
+    @include make-col(11);
+}
