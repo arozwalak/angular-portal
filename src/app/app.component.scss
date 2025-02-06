@@ -4,8 +4,12 @@
 @import 'bootstrap/scss/mixins/container';
 @import 'bootstrap/scss/mixins/grid';
 
+$topbar-height: 64px;
+
+
 .app-container {
     @include make-container();
+    min-height: 100vh;
 }
 
 .app-row {
@@ -15,6 +19,7 @@
 .app-topbar {
     @include make-col-ready();
     @include make-col(12);
+    height: $topbar-height;
 }
 
 .app-sidebar {
@@ -25,4 +30,5 @@
 .app-main {
     @include make-col-ready();
     @include make-col(11);
+    min-height: calc(100vh - $topbar-height);
 }
