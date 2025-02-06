@@ -4,16 +4,17 @@
 @import 'bootstrap/scss/mixins/container';
 @import 'bootstrap/scss/mixins/grid';
 
-$topbar-height: 64px;
+$topbar-height: 70px;
+$sidebar-width: 60px;
 
 
 .app-container {
     @include make-container();
     min-height: 100vh;
+    padding-right: 0;
 }
 
 .app-row {
-    @include make-row();
 }
 
 .app-topbar {
@@ -23,12 +24,10 @@ $topbar-height: 64px;
 }
 
 .app-sidebar {
-    @include make-col-ready();
-    @include make-col(1);
+    width: $sidebar-width;
 }
 
 .app-main {
-    @include make-col-ready();
-    @include make-col(11);
+    width: calc(100vw - $sidebar-width);
     min-height: calc(100vh - $topbar-height);
 }
