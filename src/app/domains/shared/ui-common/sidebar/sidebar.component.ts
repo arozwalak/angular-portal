@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faMagnifyingGlass,
@@ -8,7 +9,7 @@ import {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [FontAwesomeModule],
+  imports: [RouterLink, RouterLinkActive, FontAwesomeModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })

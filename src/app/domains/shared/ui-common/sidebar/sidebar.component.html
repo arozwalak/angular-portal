@@ -1,12 +1,16 @@
-
-<button class="btn bt-lg">
-    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-</button>
-
-<button class="btn bt-lg">
-    <fa-icon [icon]="faInbox"></fa-icon>
-</button>
-
-<button class="btn bt-lg">
-    <fa-icon [icon]="faList"></fa-icon>
-</button>
+<div class="mt-4 px-2">
+    <button class="btn btn-outline-primary mb-2">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+    </button>
+    
+    <a class="btn btn-outline-primary mb-2"
+       routerLink="/inbox"
+       routerLinkActive="activebutton"
+       ariaCurrentWhenActive="page">
+        <fa-icon [icon]="faInbox"></fa-icon>
+    </a>
+    
+    <a class="btn btn-outline-primary">
+        <fa-icon [icon]="faList"></fa-icon>
+    </a>
+</div>
