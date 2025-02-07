@@ -26,6 +26,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
+    "@ngrx/operators": "^19.0.1",
+    "@ngrx/signals": "^19.0.1",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.1.6",
+    "@angular-devkit/core": "^19.1.6",
     "@angular/cli": "^19.1.6",
     "@angular/compiler-cli": "^19.1.4",
     "@eslint/js": "^9.19.0",
