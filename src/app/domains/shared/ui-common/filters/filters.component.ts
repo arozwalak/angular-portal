@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, input, model, output, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Filters } from './Filters';
@@ -10,32 +10,13 @@ import { Filters } from './Filters';
   styleUrl: './filters.component.scss',
 })
 export class FiltersComponent {
-  @Output() filtersChanged = new EventEmitter<Filters>();
-
-  date!: NgbDateStruct;
-  criteria!: string;
-  hasAttachment!: string;
+  query = model<string>('');
+  hasAttachment = model<boolean>();
+  order = model<'asc' | 'desc'>('asc');
+  date = model<NgbDateStruct>();
 
   displayMonths = 1;
   navigation = 'select';
   showWeekNumbers = false;
   outsideDays = 'visible';
-
-  onFilterChanged() {
-    this.filtersChanged.emit({
-      criteria: this.criteria,
-      hasAttachment:
-        this.hasAttachment === 'true'
-          ? true
-          : this.hasAttachment === 'false'
-          ? false
-          : undefined,
-      date: this.date,
-    });
-  }
-
-  dateChanged(date: NgbDateStruct) {
-    this.date = date;
-    this.onFilterChanged();
-  }
 }

@@ -1,39 +1,14 @@
-<app-filters (filtersChanged)="onFiltersChange($event)"></app-filters>
+<app-filters
+  [query]="store.filters.query()"
+  [hasAttachment]="store.filters.hasAttachment()"
+  [order]="store.filters.order()"
+  [date]="store.filters.date()"
+  (queryChange)="store.updateQuery($event)"
+  (hasAttachmentChange)="store.updateHasAttachment($event)"
+  (dateChange)="store.updateDate($event)"
+  (orderChange)="store.updateOrder($event)"></app-filters>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col pe-0">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">From</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col" colspan="2">Received</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (messages()) {
-                        @for (message of filteredMessages(); track message.id) {
-                            <tr>
-                                <td class="align-middle">{{ message.sender }}</td>
-                                <td class="align-middle">
-                                    @if (message.hasAttachment) {
-                                        <fa-icon class="me-1" [icon]="faPaperclip"></fa-icon>
-                                    }
-                                    <span>{{ message.subject }}</span></td>
-                                <td class="align-middle">{{ message.date | date }}</td>
-                                <td></td>
-                                <td class="d-flex justify-content-end align-middle">
-                                    <button class="btn">
-                                        <fa-icon [icon]="faChevronRight"></fa-icon>
-                                    </button>
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+<app-ui-messages-list
+  [messages]="store.messages()"
+  [isLoading]="store.isLoading()">
+</app-ui-messages-list>

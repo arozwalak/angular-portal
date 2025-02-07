@@ -1,41 +1,45 @@
 <div class="container-fluid mb-2">
-    <div class="row">
-        <div class="col-3">
-            <input type="text"
-            class="form-control shadow-none"
-            placeholder="Search..."
-            [(ngModel)]="criteria"
-            (ngModelChange)="onFilterChanged()">
-        </div>
-        <div class="col-2">
-            <select class="form-select shadow-none"
-            aria-label="Default select example"
-            [(ngModel)]="hasAttachment"
-            (ngModelChange)="onFilterChanged()">
-                <option selected>Attachment</option>
-                <option [value]="true">Yes</option>
-                <option [value]="false">No</option>
-              </select>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <input
-                    class="form-control shadow-none"
-                    placeholder="yyyy-mm-dd"
-                    name="dp"
-                    (ngModelChange)="dateChanged($event)"
-                    [(ngModel)]="date"
-                    [displayMonths]="displayMonths"
-                    [navigation]="navigation"
-                    [outsideDays]="outsideDays"
-                    [showWeekNumbers]="showWeekNumbers"
-                    ngbDatepicker
-                    #d="ngbDatepicker"
-                />
-                <button class="btn btn-outline-secondary rounded-end bi bi-calendar3" (click)="d.toggle()" type="button">
-
-                </button>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-3">
+      <input type="text"
+             class="form-control shadow-none"
+             placeholder="Search..."
+             [(ngModel)]="query">
     </div>
+    <div class="col-2">
+      <select class="form-select shadow-none"
+              aria-label="Default select example"
+              [(ngModel)]="hasAttachment">
+        <option selected>Attachment</option>
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+    <div class="col-1">
+      <select class="form-select shadow-none"
+              aria-label="Default select example"
+              [(ngModel)]="order">
+        <option value="asc">Asc</option>
+        <option value="desc">Desc</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <div class="input-group">
+        <input
+          class="form-control shadow-none"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          [(ngModel)]="date"
+          [displayMonths]="displayMonths"
+          [navigation]="navigation"
+          [outsideDays]="outsideDays"
+          [showWeekNumbers]="showWeekNumbers"
+          ngbDatepicker
+          #d="ngbDatepicker"
+        />
+        <button class="btn btn-outline-secondary rounded-end bi bi-calendar3" (click)="d.toggle()" type="button">
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
