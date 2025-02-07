@@ -1,10 +1,7 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './domains/home/home.component';
-import { InboxComponent } from './domains/inbox/feature-inbox-table/inbox.component';
-import {MainComponent} from "./domains/shared/ui-common/main/main.component";
-import {SignupComponent} from "./domains/signup/signup.component";
-import {LoginComponent} from "./domains/login/feature-login/login.component";
+import {Routes} from '@angular/router';
+import {MainComponent} from "@app/shared/ui-common/main/main.component";
 import {isloggedinGuardFn} from "./isloggedin.guard";
+import {PageNotFoundComponent} from "@app/shared/ui-common/page-not-found/page-not-found.component";
 
 export const routes: Routes = [
   {
@@ -14,20 +11,31 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        loadComponent: () => import('@app/home/feature-homepage/home.component').then(c => c.HomeComponent),
       },
       {
         path: 'inbox',
-        component: InboxComponent,
-      },
+        loadComponent: () => import('@app/inbox/feature-inbox-table/inbox.component').then(c => c.InboxComponent),
+      }
     ]
   },
   {
     path: 'login',
-    component: LoginComponent
+    loadComponent: () => import('@app/login/feature-login/login.component').then(c => c.LoginComponent),
   },
   {
     path: 'signup',
-    component: SignupComponent
+    loadComponent: () => import('@app/signup/feature-signup/signup.component').then(c => c.SignupComponent),
+  },
+  {
+    path: '**',
+    component: MainComponent,
+    canActivate: [isloggedinGuardFn],
+    children: [
+      {
+        path: '',
+        component: PageNotFoundComponent
+      }
+    ]
   }
 ];
