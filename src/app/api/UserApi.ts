@@ -9,9 +9,9 @@ import {User} from "@api/models/User";
 })
 export class UserApi {
 
-  getCurrentUser(): Observable<User | null> {
+  getCurrentUser(): User | null {
     const user = localStorage.getItem('user');
-    return of(user ? JSON.parse(user) : null);
+    return user ? JSON.parse(user) : null;
   }
 
   login({email, password}: { email: string, password: string }) {
