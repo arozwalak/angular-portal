@@ -1,20 +1,18 @@
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {LoginService} from "../data/login.service";
-import {UserApi} from "../../api/UserApi";
 import {catchError, EMPTY, take} from "rxjs";
+import {AuthService} from "@app/shared/util-auth/auth.service";
 
 @Component({
   selector: 'app-login',
   imports: [RouterLink, RouterLinkActive, ReactiveFormsModule],
-  providers: [LoginService, UserApi],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   router = inject(Router);
-  loginService = inject(LoginService);
+  authService = inject(AuthService);
 
   loginForm: FormGroup = this.#createForm();
   errorMessage: string | null = null;
@@ -23,7 +21,7 @@ export class LoginComponent {
     this.errorMessage = null;
 
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value)
+      this.authService.login(this.loginForm.value)
         .pipe(
           take(1),
           catchError((error) => {
@@ -31,8 +29,7 @@ export class LoginComponent {
             return EMPTY;
           })
         )
-        .subscribe((user) => {
-          localStorage.setItem('user', JSON.stringify(user));
+        .subscribe(() => {
           this.router.navigate(['/']);
         });
     }
