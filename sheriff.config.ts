@@ -3,7 +3,7 @@ import { noDependencies, sameTag, SheriffConfig } from '@softarc/sheriff-core';
 export const sheriffConfig: SheriffConfig = {
   version: 1,
 
-  tagging: {
+  modules: {
     'src/app': {
       'domains/<domain>': {
         // ticketing, checkin, booking, ..

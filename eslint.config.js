@@ -11,6 +11,7 @@ module.exports = tseslint.config(
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
+      "plugin:@softarc/sheriff/default",
     ],
     processor: angular.processInlineTemplates,
     rules: {
